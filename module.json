@@ -1,0 +1,33 @@
+{
+    "id": "pendragon-tweaks",
+    "title": "Pendragon Tweaks",
+    "description": "A few small tweaks to the Pendragon system for my convenience.",
+    "authors": [{ "name": "razage" }],
+    "version": "1.0.0",
+    "compatibility": {
+        "minimum": "11",
+        "verified": "12.331"
+    },
+    "scripts": ["pTweaks.js"],
+    "license": "LICENSE",
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json",
+            "flags": {}
+        }
+    ],
+    "relationships": {
+        "systems": [
+            {
+                "id": "Pendragon",
+                "type": "system",
+                "compatibility": {}
+            }
+        ]
+    },
+    "url": "https://github.com/razage/Pendragon-Tweaks",
+    "manifest": "https://raw.githubusercontent.com/razage/Pendragon-Tweaks/refs/heads/main/module.json",
+    "download": "https://github.com/razage/Pendragon-Tweaks/archive/refs/heads/main.zip"
+}
