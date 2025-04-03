@@ -1,7 +1,5 @@
 // Checks if the player is mounted and handles the mounted status accordingly
 async function checkMountedStatus(actor) {
-    if (actor.type !== "character") return;
-
     // Get all horse-type items
     let horses = actor.items.filter((item) => item.type === "horse");
 
@@ -29,9 +27,21 @@ Hooks.once("ready", async () => {
     });
 });
 
+// Called when a token is created when an actor is dragged into a scene
+Hooks.on("createToken", async (tokenDoc, options, userId) => {
+    const actor = tokenDoc.actor;
+
+    if (actor && actor.type === "character") {
+        await checkMountedStatus(actor);
+    }
+});
+
 // Called every time an item is updated on its sheet
 Hooks.on("updateItem", async (item, updateData, options, userId) => {
     let actor = item.actor;
-    if (!actor) return; // Ensure the item is inside an actor
+
+    // Ensure the item is inside an actor and that the actor is a character
+    if (!actor || actor.type !== "character") return;
+
     await checkMountedStatus(actor);
 });
