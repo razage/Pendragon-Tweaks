@@ -3,7 +3,7 @@
     "title": "Pendragon Tweaks",
     "description": "A few small tweaks to the Pendragon system for my convenience.",
     "authors": [{ "name": "razage" }],
-    "version": "1.0.0",
+    "version": "0.0.1",
     "compatibility": {
         "minimum": "11",
         "verified": "12.331"
@@ -24,6 +24,12 @@
                 "id": "Pendragon",
                 "type": "system",
                 "compatibility": {}
+            }
+        ],
+        "requires": [
+            {
+                "id": "lib-wrapper",
+                "type": "module"
             }
         ]
     },

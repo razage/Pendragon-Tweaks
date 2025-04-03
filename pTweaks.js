@@ -1,13 +1,3 @@
-// Checks for the geniality flag and adds it if it doesn't exist
-async function initializeGeniality(actor) {
-    if (
-        actor.type === "character" &&
-        actor.getFlag("pendragon-tweaks", "geniality") === undefined
-    ) {
-        await actor.setFlag("pendragon-tweaks", "geniality", 0);
-    }
-}
-
 // Checks if the player is mounted and handles the mounted status accordingly
 async function checkMountedStatus(actor) {
     if (actor.type !== "character") return;
@@ -37,21 +27,6 @@ Hooks.once("ready", async () => {
         name: game.i18n.localize("pendragon-tweaks.effect.mounted"),
         img: "modules/pendragon-tweaks/icons/mounted-knight.svg",
     });
-
-    // Create a geniality property that I can modify elsewhere
-    for (let actor of game.actors) {
-        await initializeGeniality(actor);
-    }
-});
-
-// Called whenever an actor is created
-Hooks.on("createActor", async (actor, options, userId) => {
-    if (actor.type !== "character") return;
-
-    // Check if the flag is already set (to avoid overriding existing actors)
-    if (actor.getFlag("pendragon-tweaks", "geniality") === undefined) {
-        await actor.setFlag("pendragon-tweaks", "geniality", 0);
-    }
 });
 
 // Called every time an item is updated on its sheet
