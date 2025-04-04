@@ -1,3 +1,6 @@
+import registerSystemSettings from "./settings.js";
+import createStatusEffects from "./statusEffects.js";
+
 // Checks if the player is mounted and handles the mounted status accordingly
 async function checkMountedStatus(actor) {
     // Get all horse-type items
@@ -18,13 +21,16 @@ async function checkMountedStatus(actor) {
     });
 }
 
+// Called once ever when the world is loaded
+Hooks.once("init", async () => {
+    registerSystemSettings();
+});
+
 // Called once when Foundry is "ready"
 Hooks.once("ready", async () => {
-    CONFIG.statusEffects.push({
-        id: "mounted-status",
-        name: game.i18n.localize("pendragon-tweaks.effect.mounted"),
-        img: "modules/pendragon-tweaks/icons/mounted-knight.svg",
-    });
+    createStatusEffects(
+        game.settings.get("pendragon-tweaks", "eraseDefaultStatuses")
+    );
 });
 
 // Called when a token is created when an actor is dragged into a scene

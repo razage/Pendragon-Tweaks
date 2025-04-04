@@ -3,12 +3,12 @@
     "title": "Pendragon Tweaks",
     "description": "A few small tweaks to the Pendragon system for my convenience.",
     "authors": [{ "name": "razage" }],
-    "version": "0.1.0",
+    "version": "0.1.5",
     "compatibility": {
         "minimum": "11",
         "verified": "12.331"
     },
-    "scripts": ["pTweaks.js"],
+    "esmodules": ["module/pTweaks.js"],
     "license": "LICENSE",
     "languages": [
         {

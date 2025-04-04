@@ -1,3 +1,7 @@
 {
-    "pendragon-tweaks.effect.mounted": "Mounted"
+    "pendragon-tweaks.effect.disarmed": "Disarmed",
+    "pendragon-tweaks.effect.mounted": "Mounted",
+
+    "pendragon-tweaks.settings.eraseStatusEffects.label": "Remove Irrelevant Status Effects",
+    "pendragon-tweaks.settings.eraseStatusEffects.desc": "Removes all of the irrelevant status effects so only the Pendragon-relevant ones are shown."
 }
