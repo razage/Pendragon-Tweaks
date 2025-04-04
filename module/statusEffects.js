@@ -32,7 +32,6 @@ export default function createStatusEffects(overwrite = false) {
     // If overwrite is enabled, just replace all the default effects
     if (overwrite) {
         output = output.filter((effect) => !removeStatuses.includes(effect.id));
-        console.log("after filtering: ", output);
     }
 
     // Apply localization and append to the output
