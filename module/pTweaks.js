@@ -2,7 +2,12 @@ import registerSystemSettings from "./settings.js";
 import createStatusEffects from "./statusEffects.js";
 
 // Checks if the player is mounted and handles the mounted status accordingly
-async function checkMountedStatus(actor) {
+async function checkMountedStatus(actor, userId) {
+    // Don't fire this event again if another player started it.
+    if (userId !== game.user.id) {
+        return;
+    }
+
     // Get all horse-type items
     let horses = actor.items.filter((item) => item.type === "horse");
 
@@ -38,7 +43,7 @@ Hooks.on("createToken", async (tokenDoc, options, userId) => {
     const actor = tokenDoc.actor;
 
     if (actor && actor.type === "character") {
-        await checkMountedStatus(actor);
+        await checkMountedStatus(actor, userId);
     }
 });
 
@@ -49,5 +54,5 @@ Hooks.on("updateItem", async (item, updateData, options, userId) => {
     // Ensure the item is inside an actor and that the actor is a character
     if (!actor || actor.type !== "character") return;
 
-    await checkMountedStatus(actor);
+    await checkMountedStatus(actor, userId);
 });
